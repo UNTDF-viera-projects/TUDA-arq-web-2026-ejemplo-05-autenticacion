@@ -1,0 +1,31 @@
+name: auth02-cookie-sesion
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8002}:8000"
+    environment:
+      DATABASE_PATH: /data/db.sqlite3
+      DJANGO_DEBUG: "1"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-demo-only-change-in-production}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5172}
+      CSRF_TRUSTED_ORIGINS: ${CSRF_TRUSTED_ORIGINS:-http://localhost:5172}
+    volumes:
+      - session-data:/data
+    healthcheck:
+      test: ["CMD", "uv", "run", "--locked", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/activities', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-5172}:5173"
+    environment:
+      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8002}
+    depends_on:
+      backend:
+        condition: service_healthy
+volumes:
+  session-data:
