@@ -1,0 +1,6 @@
+[project]
+name = "auth03-http-basic"
+version = "0.1.0"
+description = "Ejemplo aislado de HTTP Basic para Arquitecturas Web"
+requires-python = ">=3.12"
+dependencies = ["Django>=5.2,<5.3", "django-cors-headers>=4.9,<5"]
