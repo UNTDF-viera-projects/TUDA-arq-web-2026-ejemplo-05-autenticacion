@@ -1,0 +1,21 @@
+{# Cada formulario actúa sobre el participante de la sesión del servidor. #}
+<ul class="cards">
+  {% for activity in activities %}
+    <li>
+      <h3>{{ activity.title }}</h3>
+      <small>{{ activity.starts_at|date:"d/m/Y H:i" }} · {{ activity.available_slots }}/{{ activity.capacity }} cupos disponibles</small>
+      {% if user.is_authenticated %}
+        {% if activity.id in enrolled_ids %}
+          <button disabled>Ya estás inscripto</button>
+        {% elif activity.available_slots == 0 %}
+          <button disabled>Sin cupos</button>
+        {% else %}
+          <form method="post" action="{% url 'enroll' activity.id %}">
+            {% csrf_token %}
+            <button type="submit">Inscribirme</button>
+          </form>
+        {% endif %}
+      {% endif %}
+    </li>
+  {% empty %}<li>No hay actividades disponibles.</li>{% endfor %}
+</ul>

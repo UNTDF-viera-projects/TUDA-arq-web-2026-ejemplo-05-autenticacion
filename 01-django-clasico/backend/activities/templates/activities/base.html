@@ -1,0 +1,27 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actividades · Django clásico</title>
+  <link rel="stylesheet" href="{% static 'activities/app.css' %}">
+  {# El envío sigue siendo HTML normal; JavaScript solo bloquea clics repetidos. #}
+  <script src="{% static 'activities/app.js' %}" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <span class="eyebrow">Arquitecturas web · Autenticación</span>
+    <h1>01 · Django clásico</h1>
+    <p class="muted">Actividades e inscripciones</p>
+  </header>
+  {# Los mensajes describen el resultado confirmado por el servidor. #}
+  {% for message in messages %}
+    <p role="status" class="notice">{{ message }}</p>
+  {% endfor %}
+  {% block content %}{% endblock %}
+  <footer><a href="{% url 'home' %}">Ver catálogo público</a></footer>
+</main>
+</body>
+</html>

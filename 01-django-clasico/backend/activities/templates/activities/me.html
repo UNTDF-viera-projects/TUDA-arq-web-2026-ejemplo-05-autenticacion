@@ -1,0 +1,29 @@
+{% extends "activities/base.html" %}
+{% block content %}
+{# Django obtiene esta persona de request.user, nunca de un campo editable. #}
+<section class="card">
+  <div class="row">
+    <h2>Mi perfil</h2>
+    <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="secondary" type="submit">Salir</button></form>
+  </div>
+  <p><strong>{{ participant.name }}</strong><br>{{ user.email }}</p>
+</section>
+<section class="card">
+  <h2>Mis inscripciones</h2>
+  <ul class="cards">
+    {% for enrollment in enrollments %}
+      <li>
+        <h3>{{ enrollment.activity.title }}</h3>
+        <small>{{ enrollment.activity.starts_at|date:"d/m/Y H:i" }}</small>
+        <form method="post" action="{% url 'unenroll' enrollment.activity_id %}">
+          {% csrf_token %}<button class="secondary" type="submit">Cancelar inscripción</button>
+        </form>
+      </li>
+    {% empty %}<li>Todavía no tenés inscripciones.</li>{% endfor %}
+  </ul>
+</section>
+<section class="card">
+  <h2>Actividades disponibles</h2>
+  {% include "activities/catalog.html" %}
+</section>
+{% endblock %}

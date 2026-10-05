@@ -1,0 +1,20 @@
+name: auth01-django-clasico
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8001}:8000"
+    environment:
+      DATABASE_PATH: /data/db.sqlite3
+      DJANGO_DEBUG: "1"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-auth01-local-only-change-before-deploying}
+      SESSION_SECONDS: ${SESSION_SECONDS:-28800}
+    volumes:
+      - data:/data
+    healthcheck:
+      test: ["CMD", "uv", "run", "--locked", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/login/')"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+volumes:
+  data:

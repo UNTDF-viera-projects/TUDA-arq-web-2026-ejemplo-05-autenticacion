@@ -1,0 +1,8 @@
+{% extends "activities/base.html" %}
+{% block content %}
+<section class="card">
+  <div class="row"><h2>Actividades disponibles</h2><a href="{% url 'index' %}">Volver {% if user.is_authenticated %}al perfil{% else %}al ingreso{% endif %}</a></div>
+  <p class="muted">El catálogo se puede consultar sin ingresar.</p>
+  {% include "activities/catalog.html" %}
+</section>
+{% endblock %}
