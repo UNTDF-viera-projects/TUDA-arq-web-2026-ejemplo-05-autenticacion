@@ -46,16 +46,16 @@ No se almacena la contraseña en cookies ni Web Storage. `auth01_csrf` es una co
 
 ## Rutas
 
-| Método | Ruta | Comportamiento |
-| --- | --- | --- |
-| GET | `/` | Redirige a ingreso o perfil |
-| GET | `/activities/` | Catálogo público HTML |
-| GET, POST | `/register/` | Registro con CSRF |
-| GET, POST | `/login/` | Ingreso con CSRF |
-| GET | `/me/` | Perfil, inscripciones y catálogo, requiere sesión |
-| POST | `/logout/` | Invalida sesión, requiere CSRF |
-| POST | `/activities/{activity_id}/enroll/` | Inscribe a la persona actual, requiere CSRF |
-| POST | `/activities/{activity_id}/unenroll/` | Cancela solo la inscripción propia, requiere CSRF |
+| Método    | Ruta                                  | Comportamiento                                    |
+| --------- | ------------------------------------- | ------------------------------------------------- |
+| GET       | `/`                                   | Redirige a ingreso o perfil                       |
+| GET       | `/activities/`                        | Catálogo público HTML                             |
+| GET, POST | `/register/`                          | Registro con CSRF                                 |
+| GET, POST | `/login/`                             | Ingreso con CSRF                                  |
+| GET       | `/me/`                                | Perfil, inscripciones y catálogo, requiere sesión |
+| POST      | `/logout/`                            | Invalida sesión, requiere CSRF                    |
+| POST      | `/activities/{activity_id}/enroll/`   | Inscribe a la persona actual, requiere CSRF       |
+| POST      | `/activities/{activity_id}/unenroll/` | Cancela solo la inscripción propia, requiere CSRF |
 
 No hay endpoints `/api/v1/auth/*`. Una petición anónima a `/me/` obtiene una redirección `302`, no un error JSON. La cancelación usa el ID de actividad y jamás actúa sobre la inscripción de otra persona.
 
@@ -78,7 +78,7 @@ Probá un POST sin CSRF: responde `403`. Un token obtenido antes del login tambi
 
 ## Orígenes y despliegue
 
-Este ejemplo conserva un único origen porque Django entrega el HTML. Los ejemplos 02–06 separan React y API para observar CORS. No se agrega un proxy o una SPA a este flujo.
+Este ejemplo conserva un único origen porque Django entrega el HTML. Los ejemplos 02–05 separan React y API para observar CORS. No se agrega un proxy o una SPA a este flujo.
 
 Para cambiar el puerto de Docker, copiá `.env.example` a `.env` y modificá `BACKEND_PORT`. En local, cambiá el puerto de `runserver`. La práctica HTTP usa cookies Secure deshabilitadas; un despliegue requiere HTTPS, `DJANGO_DEBUG=0`, clave privada y hosts propios. No usar el servidor de desarrollo Django como despliegue productivo. Cada ejemplo usa nombres de cookie distintos para evitar sobrescrituras en localhost; los puertos no aíslan cookies.
 

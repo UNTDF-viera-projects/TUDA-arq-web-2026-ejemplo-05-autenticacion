@@ -1,0 +1,9 @@
+[project]
+name = "auth04-bearer-opaco"
+version = "0.1.0"
+description = "Ejemplo aislado de autenticación mediante bearer opaco"
+requires-python = ">=3.12"
+dependencies = ["django>=5.2,<5.3", "django-cors-headers>=4.9,<5"]
+
+[tool.uv]
+package = false

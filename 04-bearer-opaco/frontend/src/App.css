@@ -1,0 +1,9 @@
+.shell { width: min(1080px, calc(100% - 40px)); margin: 48px auto; }
+.page-header { margin-bottom: 32px; }.page-header > p:last-child { color: #686971; }
+.eyebrow { color: #a43c32; font-size: .75rem; letter-spacing: .12em; font-weight: 750; margin-bottom: .7rem; }
+.card { background: white; border: 1px solid #e4dfd7; padding: 28px; border-radius: 16px; box-shadow: 0 5px 20px #22242a05; }
+.auth-card { max-width: 440px; margin: 0 auto; }.auth-card form { display: grid; gap: 18px; }.auth-card label { font-size: .9rem; font-weight: 600; }.auth-card form > button { margin-top: 4px; }
+.text-button { background: transparent; color: #a43c32; padding-left: 0; margin-top: 16px; }.secondary { background: white; color: #a43c32; border-color: #e4c5bf; }
+.profile { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 20px; }.profile h2 { margin-bottom: .35rem; }.profile p:last-child { margin-bottom: 0; color: #686971; }
+.dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }.activity-list { padding: 0; margin: 0; list-style: none; }.activity-list li { padding: 22px 0; border-bottom: 1px solid #eee8df; }.activity-list li:last-child { border-bottom: 0; padding-bottom: 0; }.activity-list p { font-size: .9rem; margin-bottom: 12px; }.muted { color: #686971; }.notice { border: 1px solid #dfc6a9; background: #fff9ed; padding: 14px 18px; border-radius: 10px; margin-bottom: 24px; }
+@media (max-width: 720px) { .shell { width: calc(100% - 28px); margin: 28px auto; }.dashboard { grid-template-columns: 1fr; }.card { padding: 22px; }.profile { align-items: flex-start; } }

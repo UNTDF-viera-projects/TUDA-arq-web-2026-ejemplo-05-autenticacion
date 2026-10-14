@@ -1,0 +1,11 @@
+:root { font-family: Inter, system-ui, -apple-system, sans-serif; color: #22242a; background: #f4f1ec; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+button { cursor: pointer; background: #c94a3d; color: white; border: 1px solid transparent; border-radius: 9px; padding: .75rem 1rem; font-weight: 650; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, input:focus-visible { outline: 3px solid #ae3d32; outline-offset: 3px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -.045em; margin-bottom: .7rem; }
+h2 { font-size: 1.35rem; } h3 { font-size: 1.05rem; margin-bottom: .5rem; }
+p { line-height: 1.6; } input { width: 100%; padding: .8rem; margin-top: .4rem; border: 1px solid #d7d3cc; border-radius: 8px; background: #fff; color: inherit; }
