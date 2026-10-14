@@ -1,0 +1,6 @@
+[project]
+name = "auth05-jwt-refresh"
+version = "0.1.0"
+description = "Access JWT en memoria y refresh rotativo en cookie HttpOnly"
+requires-python = ">=3.12"
+dependencies = ["Django>=5.2,<5.3", "django-cors-headers>=4.9,<5", "PyJWT>=2.15,<3"]
